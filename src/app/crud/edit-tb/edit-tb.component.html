@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>{{action | uppercase}} <small *ngIf="action!=='add'">({{local_data.field_1}})</small></h2>
+
+<mat-dialog-content >
+  
+
+    <div *ngIf="action === 'add' || action === 'Update'">
+            <div class="half">
+              <mat-form-field class="example-full-width" >
+                <input placeholder="Field 1" matInput [(ngModel)]="local_data.field_1">
+              </mat-form-field>
+           
+              <mat-form-field class="example-full-width" >
+                <input placeholder="Field 3" matInput [(ngModel)]="local_data.field_3" [disabled]="action !== 'add'">
+              </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input placeholder="Field 4" matInput [(ngModel)]="local_data.field_4" [disabled]="action !== 'add'">
+              </mat-form-field>
+              
+              </div>
+            <div class="half">
+           <mat-form-field class="example-full-width">
+                <input placeholder="Field 5" matInput [(ngModel)]="local_data.field_5">
+              </mat-form-field>
+             <mat-form-field class="example-full-width">
+                <input type="password" placeholder="CIMC Password" matInput [(ngModel)]="local_data.field_6">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input placeholder="Field 7" matInput [(ngModel)]="local_data.field_7">
+              </mat-form-field>
+             </div>
+              <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Choose Field 2</mat-label>
+                <mat-select [(ngModel)]="local_data.field_2">
+                  <mat-option value="option1">option1</mat-option>
+                  <mat-option value="option2" >option1</mat-option>
+                  <mat-option value="option3">option1</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <textarea placeholder="field_9" rows="3" matInput  [(ngModel)]="local_data.field_9" ></textarea>
+              </mat-form-field>
+    
+    </div>
+    <div *ngIf="action === 'Delete'">
+      <p>Are you sure, you want to delete <strong>{{local_data.field_1}}</strong>?</p>
+    </div>
+    
+    
+
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button paddingRight10px"(click)="close()">Close</button>
+    <button type="submit" class="mat-raised-button mat-primary"(click)="submitForm()"><span *ngIf="action === 'Delete'">Delete</span><span *ngIf="action === 'add'">Add</span><span *ngIf="action === 'Update'">Update</span></button>
+</mat-dialog-actions>

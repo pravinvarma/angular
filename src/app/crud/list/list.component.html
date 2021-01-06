@@ -1,0 +1,112 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div>
+  <div class="nav">
+    <h2 class="mat-display-0 left heading"> Management</h2>
+    <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openDialog('add',{})" class="right">
+      <mat-icon>add</mat-icon>
+    </button>
+    <mat-form-field fxFlex="40%" class="right paddingHorizontal10px">
+      <mat-icon matSuffix>search</mat-icon>
+        <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="">
+        
+      </mat-form-field>
+    </div>
+    
+    <mat-card class="paper">
+     
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-0">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox (change)="$event ? masterToggle() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                >
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null"
+                                [checked]="selection.isSelected(row)"
+                                >
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+               <!-- Symbol Column -->
+          <ng-container matColumnDef="field_8" class="field_8"  class="opacity0">
+            <th mat-header-cell *matHeaderCellDef class="opacity0" > Field 8 </th>
+            <td mat-cell *matCellDef="let element" class="opacity0"> {{element.field_8}} </td>
+          </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="field_1" >
+          <th mat-header-cell *matHeaderCellDef class="field_1"> Field 1 </th>
+          <td mat-cell *matCellDef="let element" class="field_1"> {{element.field_1}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="field_3" >
+          <th mat-header-cell *matHeaderCellDef class="field_3"> Field 3 </th>
+          <td mat-cell *matCellDef="let element" class="field_3"> {{element.field_3}} </td>
+        </ng-container>
+       <!-- Name Column -->
+       <ng-container matColumnDef="field_2" >
+        <th mat-header-cell *matHeaderCellDef class="field_2"> Field 2 </th>
+        <td mat-cell *matCellDef="let element" class="field_2"> {{element.field_2}} </td>
+      </ng-container>
+    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="field_4" >
+          <th mat-header-cell *matHeaderCellDef class="field_4"> Field 4 </th>
+          <td mat-cell *matCellDef="let element" class="field_4"> {{element.field_4}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="field_5" >
+          <th mat-header-cell *matHeaderCellDef class="field_5"> Field 5 </th>
+          <td mat-cell *matCellDef="let element" class="field_5"> {{element.field_5}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="field_6" >
+        <th mat-header-cell *matHeaderCellDef class="field_6"> Field 6 </th>
+        <td mat-cell *matCellDef="let element" class="field_6"> {{element.field_6}} </td>
+        </ng-container>
+s
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="field_7" >
+        <th mat-header-cell *matHeaderCellDef class="field_7"> field 7 </th>
+        <td mat-cell *matCellDef="let element" class="field_7"> {{element.field_7}} </td>
+        </ng-container>
+   <!-- Action Column -->
+   <ng-container matColumnDef="action" >
+    <th mat-header-cell *matHeaderCellDef class="action"> Actions </th>
+    <td mat-cell *matCellDef="let element" class="action" > 
+      <button mat-icon-button color="primary" aria-label="Example icon button with a plus one icon">
+        <mat-icon (click)="openDialog('Update',element)">edit</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" aria-label="Example icon button with a plus one icon">
+        <mat-icon (click)="openDialog('Delete',element)">delete</mat-icon>
+      </button>
+    
+    </td>
+  </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="field_9" >
+        <th mat-header-cell *matHeaderCellDef class="field_9"> field_9 </th>
+        <td mat-cell *matCellDef="let element" class="field_9"> {{element.field_9}} </td>
+        </ng-container>
+                
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+      </table>
+      <div *ngIf="progress">
+      <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+    </div>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons ></mat-paginator>
+    </mat-card>
