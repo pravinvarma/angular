@@ -15,7 +15,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  displayedColumns: string[] = ['field_8','field_1', 'field_3','field_4','field_2', 'field_5','field_6','field_7', 'field_9','action'];
+  displayedColumns: string[] = ['field_8', 'field_1', 'field_3','field_4','field_2', 'field_5','field_6','field_7', 'field_9','action'];
   dataSource:  MatTableDataSource<Product>;
   progress: Boolean = true;
   //dataSource: Product[] = [];

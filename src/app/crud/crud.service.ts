@@ -11,7 +11,7 @@ import { Product } from './product';
 })
 export class CrudService {
 
-  private apiServer = "";
+  private apiServer = "http://localhost:3002";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
